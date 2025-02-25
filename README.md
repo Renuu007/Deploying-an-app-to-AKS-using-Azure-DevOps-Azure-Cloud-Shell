@@ -18,8 +18,6 @@ You can use the PowerShell screen, but in this walkthrough I use Bash. Type “b
 
 [![Overall Architecture](https://res.cloudinary.com/practicaldev/image/fetch/s--aST7vxoo--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/i/9yjcvrdm1uibekjf354m.PNG)](https://res.cloudinary.com/practicaldev/image/fetch/s--aST7vxoo--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/i/9yjcvrdm1uibekjf354m.PNG)
 
-*I used Cloud Skew to create the above diagram. Highly recommend you check it out (It's FREE).*
-
 * **Azure DevOps & GitHub** are great, easy to use SaaS products - GitHub and Azure Pipelines will help you to achieve your source control and CI/CD needs. The source code is in a Git repository in GitHub (your application, infrastructure, and pipeline code), and your CI/CD pipeline is an Azure YAML Pipeline.
 
 * **Azure Container Registry (ACR)** is an Azure-native container registry, much like Docker Hub but it’s Azure’s container registry solution, so it integrates with other Azure resources and uses Azure Active Directory for added security. The Azure Pipeline in this demo is building and pushing the Docker image to the ACR (a new version of the image is created on every successful run of the pipeline execution).
@@ -152,10 +150,6 @@ az pipelines create --name "k8s-application-pipeline"
 
 14. Choose \[1\] to commit directly to the master branch; press enter
 
-## **CONGRATULATIONS!**
-
-**You have created an Azure DevOps Project! Wait a few minutes for the container to build, push to ACR, then deploy to AKS.**
-
 * Access your AKS cluster by getting the kubeconfig credentials:
 
 ```bash
@@ -168,17 +162,6 @@ az aks get-credentials --resource-group my-aks-rg --name myakscluster
 kubectl get all
 ```
 
-[![kubectl get all](https://res.cloudinary.com/practicaldev/image/fetch/s--kSIvGnYa--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/i/5ckrh8renuq0nerc3j88.PNG)](https://res.cloudinary.com/practicaldev/image/fetch/s--kSIvGnYa--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/i/5ckrh8renuq0nerc3j88.PNG)
-
 * Copy the service IP address (under “External IP”) and paste into a new browser tab with ":8888" (e.g. 51.137.4.161:8888) on to the end.
 
-## **This should be your final result!**
-
-[![Super k8s Demo](https://res.cloudinary.com/practicaldev/image/fetch/s--IlcXQ_4m--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/i/rak18btkdex17vlu4my7.PNG)](https://res.cloudinary.com/practicaldev/image/fetch/s--IlcXQ_4m--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/i/rak18btkdex17vlu4my7.PNG)
-
-## Summary
-
-In a relatively short period of time, you have created a new project in Azure DevOps. Within that project, you have set up a CI/CD pipeline. That pipeline built your application inside of a container, pushed that container to a container repository, and deployed the container to AKS. Finally allowing you to view your web application running in AKS from the web via a Kubernetes service. You are amazing, well done!
-
-**IMPORTANT: Head back over to your forked repo and check out the file "azure-pipelines.yml". You should see the line "trigger: – master" which means every time we make a change to the master branch, a new build will kick off automatically. Magic!**
-
+## **You will get your final result!**
